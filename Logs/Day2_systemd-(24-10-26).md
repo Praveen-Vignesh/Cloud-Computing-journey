@@ -1,7 +1,6 @@
 \# Day 002 — October 24, 2026
 
 
-
 \## Title
 
 Processes and Systemd - created a tivial hearbeat process and made it survive crash and reboot
@@ -14,11 +13,6 @@ Processes and Systemd - created a tivial hearbeat process and made it survive cr
 2. made it executable
 3. created a unit file for that executable to turn it into a service
 4. enabled the service through systemctl.
-
-
-\## 🛠️ What I Built / Did
-
----
 
 
 
