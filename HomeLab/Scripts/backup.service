@@ -1,0 +1,7 @@
+[Unit]
+Description=Run the backup script
+
+[Service]
+Type=oneshot
+ExecStart=/home/ashen/bin/backup.sh
+
