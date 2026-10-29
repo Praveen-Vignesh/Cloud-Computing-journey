@@ -1,0 +1,11 @@
+[Unit]
+Description=A trivial heartbeat service for learning systemd
+After=network.target
+
+[Service]
+ExecStart=/home/ashen/bin/heartbeat.sh
+Restart=on-failure
+User=ashen
+
+[Install]
+WantedBy=multi-user.target

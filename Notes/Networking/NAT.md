@@ -55,6 +55,9 @@ rule. → *this is port forwarding.*
 You tell the router: **any request on public port 2222 → my device's
 port 22.**
 
+```
+public port 2222  →  192.168.1.50 : 22
+```
 
 ### Why it's a security hole
 That logbook rule is permanent and open to *everyone* — every bot

@@ -1,48 +1,39 @@
-\# Day 001 — October 23, 2026
+# Day 001 — October 23, 2026
 
+**Hardened SSH and locked down the firewall**
 
+> First working day. Took a fresh Ubuntu Server install (SSH + ethernet only) and made it reachable *only* by key-based SSH from my own machine, with nothing else exposed.
 
-\## Title
+---
 
-Hardened SSH (ed25519 key auth, disabled passwords + root login), set up ufw default-deny with only 22 open
+## What I did
 
+1. **Set up the base Ubuntu server** and generated an `ed25519` key-pair (`ssh-keygen`) to connect to it.
+2. **Allowed key-based authentication only** — copied the public key to the server's `authorized_keys`, confirmed key login worked *before* changing anything else.
+3. **Disabled password authentication and root login** in `sshd_config`, so the only way in is my key.
+4. **Set up the `ufw` firewall** with a default-deny policy, allowing only port 22 (SSH).
 
+## What I built
 
-\## 🎯 Today's Logs
+A hardened Ubuntu server: key-only SSH access, no password or root login, and a firewall that drops everything except SSH. First committed config: `sshd_config`.
 
-1. setup ubuntu server generated a key-pair to connect to server
-2. allowed only key based authentication (encrypted public and private key pairs)
-generated key pair using "ssh-keygen"
-3. turned off password based authentication and root user login and only allowed key authentication.
-4. setup firewall "ufw" to only listen to port 22 (SSH port)
+## Key commands
 
+```bash
+ssh-keygen -t ed25519            # generate the key-pair (on Windows)
+sudo nano /etc/ssh/sshd_config   # PasswordAuthentication no, PermitRootLogin no
+sudo sshd -t                     # validate config before restarting
+sudo systemctl restart ssh
+sudo ufw allow 22
+sudo ufw default deny incoming
+sudo ufw enable
+sudo ufw status verbose
+```
 
+## Challenges & problems
 
+_None recorded — went smoothly._
 
+## Still don't understand
 
-\## 🛠️ What I Built / Did
-
-Setup basic ubuntu server with hardened config including firewall and authentication rules.
-
-
-
-
-
-\## ⚠️ Challenges \& Problems
-
-<!-- Errors, bugs, confusion, or things that didn't work -->
-
-
-
-
-
-
-
-\## 🔍 How I Solved Them
-
-<!-- Debugging process, solutions, and what helped me understand the problem -->
-
-
-
-
-
+<!-- fill this in — even "nothing today" is a valid entry -->
